@@ -67,17 +67,14 @@ In [IBM Cloud](https://console.ng.bluemix.net/):
 
 If you followed the previous steps you should already be inside your local clone and ready to get started running the app from Unity.
 
-> Note: This has been compiled and tested using Unity 5.6.5f1 and Watson Unity SDK from the Unity asset Store (or alternately use the develop branch)
+> Note: This has been compiled and tested using Unity 5.6.5f1 and Watson Unity SDK from this repository. If you use the Watson Unity SDK from the asset store or from github, you may find that breaking changes have been added and that this code does not work.
 
-1. Either download the Watson Unity SDK from the Unity asset store or perform the following:
-`git clone https://github.com/watson-developer-cloud/unity-sdk.git`
-2. Open Unity and inside the project launcher select the ![Open](doc/source/images/unity_open.png?raw=true) button.
-3. Navigate to where you cloned this repository and open the `Creation Sandbox` directory.
-4. If prompted to upgrade the project to a newer Unity version, do so.
-5. Follow [these instructions](https://github.com/watson-developer-cloud/unity-sdk#getting-the-watson-sdk-and-adding-it-to-unity) to add the Watson Unity SDK downloaded in step 1 to the project.
-6. Follow [these instructions](https://github.com/watson-developer-cloud/unity-sdk#configuring-your-service-credentials) to create your Speech To Text and Assistant services and find their credentials (using [IBM Cloud](https://console.ng.bluemix.net/)).
-7. Open the script `vr-speech-sandbox-vive/Creation Sandbox/Assets/Scripts/SpeechSandboxStreaming.cs`
-8. Fill in the credentials for Speech to Text and Assistant, and the Assistant workspace id:
+1. Open Unity and inside the project launcher select the ![Open](doc/source/images/unity_open.png?raw=true) button.
+1. Navigate to where you cloned this repository and open the `Creation Sandbox` directory.
+1. If prompted to upgrade the project to a newer Unity version, do so.
+1. Follow [these instructions](https://github.com/watson-developer-cloud/unity-sdk#configuring-your-service-credentials) to create your Speech To Text and Assistant services and find their credentials (using [IBM Cloud](https://console.ng.bluemix.net/)).
+1. Open the script `vr-speech-sandbox-vive/Creation Sandbox/Assets/Scripts/SpeechSandboxStreaming.cs`
+1. Fill in the credentials for Speech to Text and Assistant, and the Assistant workspace id:
 ```
     private string stt_username = "";
     private string stt_password = "";
@@ -93,9 +90,9 @@ If you followed the previous steps you should already be inside your local clone
     private string convo_workspaceId = "";
 ```
 
-9. Install [Blender](https://www.blender.org)
-10. In the Unity editor project tab, select `Assets`->`Scenes`->`MainGame`->`MainMenu` and double click to load the scene.
-11. Press Play
+1. Install [Blender](https://www.blender.org)
+1. In the Unity editor project tab, select `Assets`->`Scenes`->`MainGame`->`MainMenu` and double click to load the scene.
+1. Press Play
 
 # Links
 
