@@ -50,7 +50,7 @@ public class SaveCredentials : MonoBehaviour
     [Tooltip("The service URL (optional). This defaults to \"https://gateway.watsonplatform.net/language-translator/api\".")]
     public string translatorServiceUrl = "https://gateway.watsonplatform.net/language-translator/api";
 
-    [Tooltip("The version date with which you would like to use the service in the form YYYY-MM-DD. Current is ")]
+    [Tooltip("The version date with which you would like to use the service in the form YYYY-MM-DD. Current is 2018-07-10")]
     public string translatorVersionDate = "2018-07-10";
 
     [Header("CF Authentication")]
@@ -66,6 +66,13 @@ public class SaveCredentials : MonoBehaviour
 
     [Tooltip("The IAM url used to authenticate the apikey (optional). This defaults to \"https://iam.bluemix.net/identity/token\".")]
     public string translatorIamUrl = "";
+
+    [Header("Credential Mangement")]
+    [Tooltip("Delete existing credentials saved to disk. String must be 'true' or 'false'.")]
+    public string deleteCredentialsFromDisk = "false";
+
+    [Tooltip("Save new credentials to disk. String must be 'true' or 'false'.")]
+    public string saveCredentialsToDisk = "true";
     #endregion
 
     private static string speechToTextServiceUrlKey = "SPEECH_TO_TEXT_SERVICE_URL";
@@ -88,6 +95,9 @@ public class SaveCredentials : MonoBehaviour
     private static string translatorPasswordKey = "TRANSLATOR_PASSWORD";
     private static string translatorIamApikeyKey = "TRANSLATOR_IAM_APIKEY";
     private static string translatorIamUrlKey = "TRANSLATOR_IAM_URL";
+
+    private static string deleteCredentialsFromDiskKey = "DELETE_CREDENTIALS_FROM_DISK_KEY";
+    private static string saveCredentialsToDiskKey = "SAVE_CREDENTIALS_TO_DISK_KEY";
 
 
     public void Save()
@@ -113,12 +123,25 @@ public class SaveCredentials : MonoBehaviour
         PlayerPrefs.SetString(translatorPasswordKey, translatorPassword);
         PlayerPrefs.SetString(translatorIamApikeyKey, translatorIamApikey);
         PlayerPrefs.SetString(translatorIamUrlKey, translatorIamUrl);
+
+        PlayerPrefs.SetString(deleteCredentialsFromDiskKey, deleteCredentialsFromDisk);
+        PlayerPrefs.SetString(saveCredentialsToDiskKey, saveCredentialsToDisk);
         // Manually save the PlayerPrefs file to disk, in case we experience a crash
         PlayerPrefs.Save();
     }
 
     public void Load()
     {
+        if(PlayerPrefs.HasKey(deleteCredentialsFromDiskKey))
+        {
+            deleteCredentialsFromDisk = PlayerPrefs.GetString(deleteCredentialsFromDiskKey);
+        }
+
+        if(PlayerPrefs.HasKey(saveCredentialsToDiskKey))
+        {
+            saveCredentialsToDisk = PlayerPrefs.GetString(saveCredentialsToDiskKey);
+        }
+
         if (PlayerPrefs.HasKey(speechToTextServiceUrlKey))
         {
             // load playerName from the PlayerPrefs file.
