@@ -48,7 +48,7 @@ public class SpeechSandboxStreaming : MonoBehaviour
     private SpeechToText _speechToText;
     private Conversation _conversation;
     private LanguageTranslator _language_translator;
-    private string _translationModel = "ja-en";
+    private string _translationModel = "es-en";
 
     private IEnumerator createServices(){
 
@@ -111,10 +111,10 @@ public class SpeechSandboxStreaming : MonoBehaviour
 
         Credentials asst_credentials = null;
         //  Create credential and instantiate service
-        if (!string.IsNullOrEmpty(saveCredentials.assistantUsername) && !string.IsNullOrEmpty(saveCredentials.assistantPassword))
+        if (!string.IsNullOrEmpty(saveCredentials.assistantUsername) && !string.IsNullOrEmpty(saveCredentials.assitantPassword))
         {
             //  Authenticate using username and password
-            asst_credentials = new Credentials(saveCredentials.assistantUsername, saveCredentials.assistantPassword, saveCredentials.assistantServiceUrl);
+            asst_credentials = new Credentials(saveCredentials.assistantUsername, saveCredentials.assitantPassword, saveCredentials.assistantServiceUrl);
         }
         else if (!string.IsNullOrEmpty(saveCredentials.assistantIamApikey))
         {
@@ -139,7 +139,7 @@ public class SpeechSandboxStreaming : MonoBehaviour
         _conversation = new Conversation(asst_credentials);
         _language_translator = new LanguageTranslator(saveCredentials.translatorVersionDate, lang_credentials);
 
-        _speechToText.RecognizeModel = "ja-JP_BroadbandModel";
+        _speechToText.RecognizeModel = "es-ES_BroadbandModel";
         _conversation.VersionDate = saveCredentials.assistantVersionDate;
 
         Active = true;
@@ -151,6 +151,7 @@ public class SpeechSandboxStreaming : MonoBehaviour
     {
         LogSystem.InstallDefaultReactors();
 
+        saveCredentials.Save();
         saveCredentials.Load();
         //  Create credential and instantiate service
         Runnable.Run(createServices());
